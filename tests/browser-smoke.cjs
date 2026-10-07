@@ -65,19 +65,28 @@ async function main() {
         throw new Error('Broken internal anchors: ' + JSON.stringify(brokenAnchors));
       }
 
-      await page.getByRole('navigation', { name: 'Navigation principale' }).waitFor();
+      const nav = page.locator('#primary-nav');
+      if (await nav.count() !== 1) throw new Error('Primary navigation missing');
+      if (!viewport.isMobile && !(await nav.isVisible())) {
+        throw new Error('Primary navigation should be visible on non-mobile viewport');
+      }
       await page.getByRole('heading', { level: 1 }).waitFor();
 
       if (viewport.isMobile) {
         const toggle = page.getByRole('button', { name: /Ouvrir le menu/i });
         await toggle.click();
-        const nav = page.locator('#primary-nav');
         if (!(await nav.evaluate(el => el.classList.contains('open')))) {
           throw new Error('Mobile navigation did not open');
+        }
+        if ((await toggle.getAttribute('aria-expanded')) !== 'true') {
+          throw new Error('Mobile navigation aria-expanded did not update');
         }
         await toggle.press('Escape');
         if (await nav.evaluate(el => el.classList.contains('open'))) {
           throw new Error('Escape did not close mobile navigation');
+        }
+        if ((await toggle.getAttribute('aria-expanded')) !== 'false') {
+          throw new Error('Mobile navigation aria-expanded did not reset');
         }
       }
 
@@ -153,7 +162,7 @@ async function main() {
       href: document.activeElement?.getAttribute('href'),
       visible: Boolean(document.activeElement && document.activeElement.getBoundingClientRect().width)
     }));
-    if (focused.tag !== 'A' || focused.href !== 'http://127.0.0.1:4173/#main' || !focused.visible) {
+    if (focused.tag !== 'A' || focused.href !== '#main' || !focused.visible) {
       throw new Error('Skip-link keyboard focus smoke failed: ' + JSON.stringify(focused));
     }
 
