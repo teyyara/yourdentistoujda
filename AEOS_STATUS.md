@@ -13,27 +13,32 @@
 
 ## Latest loop
 ### LOOP 003 — rendered browser validation
-- Added a pinned Playwright 1.63.0 Chromium validation job to the repository workflow.
+- Added pinned Playwright 1.63.0 Chromium CI validation.
+- Repaired mobile navigation Escape-close behavior.
+- Stabilized mobile browser assertions after observing the correct accessible-name transition from “Ouvrir le menu” to “Fermer le menu”.
 - Added deterministic mobile/tablet/desktop smoke coverage.
-- Validated internal anchors, horizontal overflow, primary navigation, FAQ interaction and mobile-menu behavior.
-- Exercised the complete appointment-request journey with test data and verified the generated WhatsApp payload locally without opening a real external conversation.
+- Exercised the complete appointment-request journey with test data and verified the generated WhatsApp URL/payload locally without sending a real message.
 - Exercised keyboard focus on the skip link.
-- Added runtime screenshots/report as CI artifacts.
-- No production side effects are performed by the test.
+- Captured runtime screenshots and a machine-readable report as GitHub Actions evidence.
+- Visually inspected mobile, tablet and desktop screenshots: coherent hierarchy, spacing, responsive composition and form presentation; no obvious clipping/overflow observed.
 
 ## Evidence / validation
 - Research gate: **PASS — COMPLETE**.
 - Repository capability: **PASS**.
 - Static validation: **PASS**.
-- Browser/runtime validation: **PASS** — pinned Playwright 1.63.0 / Chromium CI run completed successfully against localhost.
-- Responsive runtime smoke: **PASS** — 390px, 768px and 1440px viewport checks.
-- Booking journey: **PASS** — required fields, consent, WhatsApp URL target and payload contents verified.
+- Browser/runtime validation: **PASS** — GitHub Actions run `37615878249` completed successfully.
+- Responsive runtime smoke: **PASS** — 390×844, 768×900 and 1440×1000 viewports; zero horizontal overflow.
+- Navigation/FAQ interaction: **PASS**.
+- Booking journey: **PASS** — required inputs, consent, WhatsApp target and required payload fields verified.
 - Keyboard smoke: **PASS** — skip-link receives first keyboard focus.
-- Console/page-error smoke: **PASS** — no runtime console errors or uncaught page errors observed in the test.
+- Console/page-error smoke: **PASS** — no console errors or uncaught page errors.
+- Runtime evidence artifact: **PASS** — `aeos-loop-003-browser-evidence`, artifact ID `11480325099`, SHA-256 `85f25f7c3bc2d0f5aecc816f6c9f58b2f8d86151d4a653a749934d0b073649d9`.
+- Playwright version: **1.63.0**, pinned in CI.
 - Automated axe/screen-reader validation: **NOT AVAILABLE**.
 - Lighthouse/performance lab: **NOT AVAILABLE**.
+- Deep security scanning: **NOT AVAILABLE**.
 - Production deployment: **NOT PROVISIONED**.
-- Visual quality: **NOT CERTIFIED** — screenshots are captured, but this loop does not perform a human/visual-comparison judgement pass.
+- Visual quality: **QUALITY ASSESSMENT PASS** for captured screenshots; this remains an evidence-based visual review, not a business conversion claim.
 
 ## Known content gaps
 1. Client-approved logo/brand assets and clinic photography.
@@ -43,7 +48,10 @@
 5. Analytics/monitoring configuration.
 
 ## Next highest-value work
-Perform accessibility automation plus deeper security/static analysis, then harden remaining release metadata/SEO and prepare production deployment only after the clinic’s content and booking workflow are provisioned.
+Add automated accessibility/security scanning, then prepare release metadata/deployment once the clinic’s approved content, assets and real booking workflow are provisioned.
+
+## Validated application checkpoint
+`154d65cff76c615b7a676fc7749b9f4ea7683ec6`
 
 ## Last updated
-2026-10-07T12:50:00+01:00
+2026-10-07T12:48:00+01:00

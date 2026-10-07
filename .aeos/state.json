@@ -3,7 +3,7 @@
   "keyphrase":"Your Dentist in Oujda — Smart Dental Booking Website",
   "rulebook_version":"AEOS v3",
   "keyphrase_research":{"status":"COMPLETE","timestamp":"2026-10-07T12:12:00+01:00","dossier":"evidence/research/keyphrase-dossier.md"},
-  "loop":{"current":3,"candidate":"CAND-003-runtime-validation","state":"WAITING_FOR_CONTINUE","latest_checkpoint":"PENDING","latest_known_good":"e5bd604944424a3ad6e0981603d50343bcaffedd"},
+  "loop":{"current":3,"candidate":"CAND-003-runtime-validation","state":"WAITING_FOR_CONTINUE","latest_checkpoint":"154d65cff76c615b7a676fc7749b9f4ea7683ec6","latest_known_good":"154d65cff76c615b7a676fc7749b9f4ea7683ec6","browser_validation":{"workflow_run_id":37615878249,"status":"PASS","artifact_id":11480325099,"artifact_sha256":"85f25f7c3bc2d0f5aecc816f6c9f58b2f8d86151d4a653a749934d0b073649d9","viewports":["390x844","768x900","1440x1000"],"horizontal_overflow_px":0,"booking_journey":"PASS","keyboard_skip_link":"PASS","console_errors":0,"page_errors":0}},
   "project_class":"W1",
   "critical_unknowns":["official client-approved content and brand assets","actual appointment availability source/API","production domain and deployment target","production analytics/monitoring configuration"]
 }
