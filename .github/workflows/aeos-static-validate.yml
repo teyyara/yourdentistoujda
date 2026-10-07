@@ -1,4 +1,4 @@
-name: AEOS static validation
+name: AEOS validation
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  validate:
+  static:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +24,7 @@ jobs:
           test -f AEOS_STATUS.md
           test -f evidence/research/keyphrase-dossier.md
           test -f site.webmanifest
+          test -f tests/browser-smoke.cjs
 
       - name: Validate JSON
         run: |
@@ -96,3 +97,42 @@ jobs:
 
       - name: Report
         run: echo "AEOS static validation completed."
+
+  browser:
+    needs: static
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Install pinned Playwright
+        run: |
+          npm init -y
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 > /tmp/yourdentist-http.log 2>&1 &
+          echo $! > /tmp/yourdentist-http.pid
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/yourdentist-http.log
+          exit 1
+
+      - name: Run rendered browser smoke
+        run: node tests/browser-smoke.cjs
+
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aeos-loop-003-browser-evidence
+          path: test-results/
+          if-no-files-found: error

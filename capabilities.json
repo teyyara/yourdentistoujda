@@ -1,20 +1,20 @@
 {
-  "browser_runtime": false,
-  "playwright": false,
-  "chromium": false,
+  "browser_runtime": true,
+  "playwright": true,
+  "chromium": true,
   "firefox": false,
   "webkit": false,
-  "mobile_emulation": false,
+  "mobile_emulation": true,
   "screen_reader": false,
   "axe_core": false,
   "lighthouse": false,
   "zap": false,
-  "secret_scan": false,
+  "secret_scan": true,
   "typecheck": false,
-  "package_manager": false,
+  "package_manager": true,
   "github_read": true,
   "github_write": true,
   "deployment_access": false,
   "production_access": false,
-  "note": "Repository creation and static artifact inspection are available in LOOP 001. Runtime/browser certification remains pending because no browser execution capability is attached to this session."
+  "note": "Browser validation is provided by GitHub Actions using pinned Playwright 1.63.0 with Chromium and mobile emulation. The current chat agent still has no directly attached local browser."
 }

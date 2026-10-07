@@ -5,29 +5,35 @@
 - Run ID: `oujda-dentist-2026-10-07`
 - Rulebook: AEOS v3
 - Project class: W1 — Interactive Marketing
-- Current loop: 002
-- Current candidate: `CAND-002-seo-accessibility-hardening`
+- Current loop: 003
+- Current candidate: `CAND-003-runtime-validation`
 
 ## State
 **WAITING_FOR_CONTINUE**
 
 ## Latest loop
-### LOOP 002 — SEO + accessibility hardening
-- Added Open Graph/Twitter metadata and web manifest linkage.
-- Added Dentist JSON-LD with corroborated practice identity, address, phone, public hours and Instagram profile.
-- Replaced unsupported “secure form” wording with neutral form language.
-- Added a JavaScript-disabled contact fallback message.
-- Extended the trusted static validator to verify structured data and manifest presence.
+### LOOP 003 — rendered browser validation
+- Added a pinned Playwright 1.63.0 Chromium validation job to the repository workflow.
+- Added deterministic mobile/tablet/desktop smoke coverage.
+- Validated internal anchors, horizontal overflow, primary navigation, FAQ interaction and mobile-menu behavior.
+- Exercised the complete appointment-request journey with test data and verified the generated WhatsApp payload locally without opening a real external conversation.
+- Exercised keyboard focus on the skip link.
+- Added runtime screenshots/report as CI artifacts.
+- No production side effects are performed by the test.
 
 ## Evidence / validation
 - Research gate: **PASS — COMPLETE**.
 - Repository capability: **PASS**.
-- Static source inspection: **PASS** — updated HTML and validator prepared from the current main checkpoint.
-- Browser/runtime execution: **NOT AVAILABLE**.
+- Static validation: **PASS**.
+- Browser/runtime validation: **PASS** — pinned Playwright 1.63.0 / Chromium CI run completed successfully against localhost.
+- Responsive runtime smoke: **PASS** — 390px, 768px and 1440px viewport checks.
+- Booking journey: **PASS** — required fields, consent, WhatsApp URL target and payload contents verified.
+- Keyboard smoke: **PASS** — skip-link receives first keyboard focus.
+- Console/page-error smoke: **PASS** — no runtime console errors or uncaught page errors observed in the test.
 - Automated axe/screen-reader validation: **NOT AVAILABLE**.
 - Lighthouse/performance lab: **NOT AVAILABLE**.
 - Production deployment: **NOT PROVISIONED**.
-- Structured-data basis: Google recommends the most specific applicable LocalBusiness subtype; Schema.org defines Dentist as a LocalBusiness subtype and openingHoursSpecification for place hours. (Google Search Central and Schema.org, retrieved 2026-10-07.)
+- Visual quality: **NOT CERTIFIED** — screenshots are captured, but this loop does not perform a human/visual-comparison judgement pass.
 
 ## Known content gaps
 1. Client-approved logo/brand assets and clinic photography.
@@ -37,7 +43,7 @@
 5. Analytics/monitoring configuration.
 
 ## Next highest-value work
-Use a real browser/runtime validation pass when available; prioritize the booking journey, mobile layout, focus behavior and visual regression.
+Perform accessibility automation plus deeper security/static analysis, then harden remaining release metadata/SEO and prepare production deployment only after the clinic’s content and booking workflow are provisioned.
 
 ## Last updated
-2026-10-07T12:25:00+01:00
+2026-10-07T12:50:00+01:00
