@@ -1,0 +1,92 @@
+name: AEOS static validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate required project files
+        run: |
+          set -e
+          test -f index.html
+          test -f styles.css
+          test -f script.js
+          test -f project.config.json
+          test -f capabilities.json
+          test -f .aeos/state.json
+          test -f AEOS_STATUS.md
+          test -f evidence/research/keyphrase-dossier.md
+
+      - name: Validate JSON
+        run: |
+          python - <<'PY'
+          import json
+          for path in ["project.config.json", "capabilities.json", ".aeos/state.json"]:
+              with open(path, encoding="utf-8") as f:
+                  json.load(f)
+              print("JSON OK:", path)
+          PY
+
+      - name: Validate HTML structure and critical journeys
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+
+          class Parser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids = set()
+                  self.tags = []
+              def handle_starttag(self, tag, attrs):
+                  self.tags.append(tag)
+                  for key, value in attrs:
+                      if key == "id" and value:
+                          self.ids.add(value)
+
+          p = Parser()
+          with open("index.html", encoding="utf-8") as f:
+              p.feed(f.read())
+
+          required_ids = {"main", "treatments", "clinic", "booking", "booking-form", "faq", "contact"}
+          missing = required_ids - p.ids
+          if missing:
+              raise SystemExit(f"Missing required IDs: {sorted(missing)}")
+
+          required_tags = {"main", "nav", "form", "header", "footer"}
+          missing_tags = required_tags - set(p.tags)
+          if missing_tags:
+              raise SystemExit(f"Missing structural tags: {sorted(missing_tags)}")
+
+          print("HTML structure OK")
+          PY
+
+      - name: Validate booking wiring
+        run: |
+          grep -q 'wa.me/212536701060' script.js
+          grep -q 'booking-form' index.html
+          grep -q 'name="service"' index.html
+          grep -q 'name="doctor"' index.html
+          grep -q 'name="date"' index.html
+          grep -q 'name="time"' index.html
+          grep -q 'name="phone"' index.html
+
+      - name: Check whitespace errors
+        run: git diff --check
+
+      - name: Basic secret-pattern check
+        run: |
+          if grep -RInE '(BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,})' . \
+            --exclude-dir=.git --exclude='*.map'; then
+            echo "Potential secret pattern detected."
+            exit 1
+          fi
+
+      - name: Report
+        run: echo "AEOS static validation completed."
