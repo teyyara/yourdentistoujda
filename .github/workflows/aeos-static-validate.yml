@@ -23,6 +23,7 @@ jobs:
           test -f .aeos/state.json
           test -f AEOS_STATUS.md
           test -f evidence/research/keyphrase-dossier.md
+          test -f site.webmanifest
 
       - name: Validate JSON
         run: |
@@ -64,7 +65,12 @@ jobs:
           if missing_tags:
               raise SystemExit(f"Missing structural tags: {sorted(missing_tags)}")
 
-          print("HTML structure OK")
+          source = open("index.html", encoding="utf-8").read()
+          if "application/ld+json" not in source:
+              raise SystemExit("Missing JSON-LD structured data")
+          if '<meta property="og:title"' not in source:
+              raise SystemExit("Missing Open Graph title")
+          print("HTML/SEO structure OK")
           PY
 
       - name: Validate booking wiring

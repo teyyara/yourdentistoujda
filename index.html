@@ -6,6 +6,36 @@
   <meta name="theme-color" content="#0b2533">
   <meta name="description" content="Cabinet dentaire à Oujda — découvrez les soins, le cabinet et demandez un rendez-vous avec le Dr Mohammed Taha Zarrouki.">
   <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="your dentist in oujda — Cabinet dentaire">
+  <meta property="og:description" content="Cabinet dentaire à Oujda — découvrez les soins, le cabinet et demandez un rendez-vous avec le Dr Mohammed Taha Zarrouki.">
+  <meta property="og:locale" content="fr_MA">
+  <meta name="twitter:card" content="summary">
+  <link rel="manifest" href="site.webmanifest">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Dentist",
+    "@id":"#dentist",
+    "name":"Cabinet Dentaire Dr. Mohammed Taha Zarrouki",
+    "url":"/",
+    "telephone":"+212536701060",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Boulevard Hassan II, Hay Zangout, Imm. Badr, 2e étage, N°13",
+      "addressLocality":"Oujda",
+      "postalCode":"60050",
+      "addressCountry":"MA"
+    },
+    "openingHoursSpecification":[
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/Monday","opens":"09:00","closes":"17:30"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["https://schema.org/Tuesday","https://schema.org/Wednesday","https://schema.org/Thursday","https://schema.org/Friday"],"opens":"09:00","closes":"18:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"https://schema.org/Saturday","opens":"09:00","closes":"12:30"}
+    ],
+    "sameAs":["https://www.instagram.com/dr_taha_zarrouki/"],
+    "knowsAbout":["Implantologie","Dentisterie esthétique"]
+  }
+  </script>
   <title>your dentist in oujda — Cabinet dentaire</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -167,7 +197,7 @@
 
         <form id="booking-form" class="booking-form" novalidate>
           <div class="form-top">
-            <div><span>DEMANDE DE RDV</span><strong>Formulaire sécurisé côté navigateur</strong></div>
+            <div><span>DEMANDE DE RDV</span><strong>Formulaire de demande côté navigateur</strong></div>
             <span class="form-status" id="form-status" role="status" aria-live="polite"></span>
           </div>
 
@@ -228,6 +258,7 @@
           <button class="button button-primary form-submit" type="submit">Préparer ma demande WhatsApp <span aria-hidden="true">↗</span></button>
           <p class="form-note">La validation finale du rendez-vous et du créneau dépend du cabinet. Aucun diagnostic n’est établi via ce formulaire.</p>
         </form>
+          <noscript><p class="form-note">JavaScript est requis pour préparer la demande WhatsApp. Vous pouvez aussi appeler directement le cabinet au 05 36 70 10 60.</p></noscript>
       </div>
     </section>
 

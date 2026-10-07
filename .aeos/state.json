@@ -1,25 +1,9 @@
 {
-  "run_id": "oujda-dentist-2026-10-07",
-  "keyphrase": "Your Dentist in Oujda — Smart Dental Booking Website",
-  "rulebook_version": "AEOS v3",
-  "keyphrase_research": {
-    "status": "COMPLETE",
-    "timestamp": "2026-10-07T12:12:00+01:00",
-    "dossier": "evidence/research/keyphrase-dossier.md"
-  },
-  "loop": {
-    "current": 1,
-    "candidate": "CAND-001-foundation",
-    "state": "WAITING_FOR_CONTINUE",
-    "latest_checkpoint": "39bf45d2841f9ed86be4b4b52a350b79c6353068",
-    "latest_known_good": "39bf45d2841f9ed86be4b4b52a350b79c6353068",
-    "checkpoint_note": "Static validation PASS; browser/runtime validation unavailable in LOOP 001. AEOS_STATUS metadata was finalized in subsequent administrative commits."
-  },
-  "project_class": "W1",
-  "critical_unknowns": [
-    "official client-approved content and brand assets",
-    "actual appointment availability source/API",
-    "production domain and deployment target",
-    "production analytics/monitoring configuration"
-  ]
+  "run_id":"oujda-dentist-2026-10-07",
+  "keyphrase":"Your Dentist in Oujda — Smart Dental Booking Website",
+  "rulebook_version":"AEOS v3",
+  "keyphrase_research":{"status":"COMPLETE","timestamp":"2026-10-07T12:12:00+01:00","dossier":"evidence/research/keyphrase-dossier.md"},
+  "loop":{"current":2,"candidate":"CAND-002-seo-accessibility-hardening","state":"WAITING_FOR_CONTINUE","latest_checkpoint":"PENDING","latest_known_good":"39bf45d2841f9ed86be4b4b52a350b79c6353068"},
+  "project_class":"W1",
+  "critical_unknowns":["official client-approved content and brand assets","actual appointment availability source/API","production domain and deployment target","production analytics/monitoring configuration"]
 }
