@@ -1,0 +1,9 @@
+{
+  "name": "your dentist in oujda",
+  "short_name": "your dentist",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ed",
+  "theme_color": "#0b2533",
+  "icons": [{"src":"favicon.svg","sizes":"any","type":"image/svg+xml"}]
+}

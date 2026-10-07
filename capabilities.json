@@ -1,0 +1,20 @@
+{
+  "browser_runtime": false,
+  "playwright": false,
+  "chromium": false,
+  "firefox": false,
+  "webkit": false,
+  "mobile_emulation": false,
+  "screen_reader": false,
+  "axe_core": false,
+  "lighthouse": false,
+  "zap": false,
+  "secret_scan": false,
+  "typecheck": false,
+  "package_manager": false,
+  "github_read": true,
+  "github_write": true,
+  "deployment_access": false,
+  "production_access": false,
+  "note": "Repository creation and static artifact inspection are available in LOOP 001. Runtime/browser certification remains pending because no browser execution capability is attached to this session."
+}

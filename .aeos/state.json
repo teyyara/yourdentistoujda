@@ -1,0 +1,24 @@
+{
+  "run_id": "oujda-dentist-2026-10-07",
+  "keyphrase": "Your Dentist in Oujda — Smart Dental Booking Website",
+  "rulebook_version": "AEOS v3",
+  "keyphrase_research": {
+    "status": "COMPLETE",
+    "timestamp": "2026-10-07T12:12:00+01:00",
+    "dossier": "evidence/research/keyphrase-dossier.md"
+  },
+  "loop": {
+    "current": 1,
+    "candidate": "CAND-001-foundation",
+    "state": "WAITING_FOR_CONTINUE",
+    "latest_checkpoint": "PENDING_AFTER_TREE_COMMIT",
+    "latest_known_good": "PENDING_RUNTIME_CAPABILITY"
+  },
+  "project_class": "W1",
+  "critical_unknowns": [
+    "official client-approved content and brand assets",
+    "actual appointment availability source/API",
+    "production domain and deployment target",
+    "production analytics/monitoring configuration"
+  ]
+}

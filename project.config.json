@@ -1,0 +1,35 @@
+{
+  "project": {
+    "name": "your-dentist-in-oujda",
+    "type": "W1",
+    "scope": "dental practice brochure + appointment request",
+    "location": "Oujda, Morocco",
+    "language": "fr",
+    "zero_paid_dependency_oriented": true
+  },
+  "business": {
+    "display_name": "your dentist in oujda",
+    "practitioner": "Dr Mohammed Taha Zarrouki"
+  },
+  "booking": {
+    "mode": "whatsapp_request",
+    "realtime_availability": false,
+    "automatic_confirmation": false,
+    "number": "+212536701060",
+    "requires_clinic_confirmation": true
+  },
+  "seo": {
+    "indexable": true,
+    "canonical": null,
+    "sitemap": null
+  },
+  "deployment": {
+    "target": "to_be_provisioned",
+    "domain": null
+  },
+  "risk_notes": [
+    "Medical content must remain informational and avoid unsupported diagnoses, guarantees, or treatment claims.",
+    "Publicly sourced address/hours/phone must be revalidated by the clinic before production launch.",
+    "No booking API or appointment database is provisioned in this loop."
+  ]
+}
