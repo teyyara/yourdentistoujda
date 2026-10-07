@@ -73,7 +73,7 @@ async function main() {
       await page.getByRole('heading', { level: 1 }).waitFor();
 
       if (viewport.isMobile) {
-        const toggle = page.getByRole('button', { name: /Ouvrir le menu/i });
+        const toggle = page.locator('.menu-toggle');
         await toggle.click();
         if (!(await nav.evaluate(el => el.classList.contains('open')))) {
           throw new Error('Mobile navigation did not open');
